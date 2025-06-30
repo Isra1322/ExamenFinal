@@ -1,0 +1,14 @@
+﻿@model Inventario.Entities.Usuario
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+}
+
+<h2>¿Estás seguro?</h2>
+
+<p>¿Deseas eliminar al usuario <strong>@Model.Nombre</strong> con email <strong>@Model.Email</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

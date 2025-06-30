@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Panel de Administrador";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>Bienvenido, administrador. Aquí puedes gestionar usuarios, artículos y préstamos.</p>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Gestión de Usuarios</h5>
+                <p class="card-text">Ver y crear nuevos usuarios en el sistema.</p>
+                <a href="@Url.Action("Index", "Usuarios")" class="btn btn-primary">Gestionar Usuarios</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Artículos</h5>
+                <p class="card-text">Crear, editar y eliminar artículos del inventario.</p>
+                <a href="@Url.Action("Index", "Articulos")" class="btn btn-primary">Gestionar Artículos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Solicitudes de Préstamo</h5>
+                <p class="card-text">Aprobar, rechazar o registrar devoluciones.</p>
+                <a href="@Url.Action("Pendientes", "Prestamos")" class="btn btn-primary">Gestionar Préstamos</a>
+            </div>
+        </div>
+    </div>
+</div>

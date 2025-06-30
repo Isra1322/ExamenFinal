@@ -1,0 +1,32 @@
+﻿@model List<Inventario.Entities.Usuario>
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-action="Register" class="btn btn-success mb-3">+ Nuevo Usuario</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Nombre</td>
+                <td>@usuario.Email</td>
+                <td>@usuario.Rol</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@usuario.Id" class="btn btn-sm btn-warning me-1">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@usuario.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

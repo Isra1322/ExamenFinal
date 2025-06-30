@@ -1,0 +1,35 @@
+﻿@model List<Inventario.Entities.Prestamo>
+@{
+    ViewData["Title"] = "Mis Solicitudes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success">@TempData["Exito"]</div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Artículo</th>
+            <th>Fecha Solicitud</th>
+            <th>Fecha Entrega</th>
+            <th>Fecha Devolución</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Articulo?.Nombre</td>
+                <td>@p.FechaSolicitud.ToShortDateString()</td>
+                <td>@p.FechaEntrega?.ToShortDateString()</td>
+                <td>@(p.FechaDevolucion?.ToShortDateString() ?? "-")</td>
+                <td>@p.Estado</td>
+            </tr>
+        }
+    </tbody>
+</table>

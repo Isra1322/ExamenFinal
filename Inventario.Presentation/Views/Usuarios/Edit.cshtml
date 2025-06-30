@@ -1,0 +1,31 @@
+﻿@model Inventario.Presentation.Models.RegisterViewModel
+@using Inventario.Entities
+
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" asp-route-id="@ViewBag.IdUsuario" method="post">
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Rol" class="form-label"></label>
+        <select asp-for="Rol" asp-items="ViewBag.Roles" class="form-select"></select>
+        <span asp-validation-for="Rol" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,33 @@
+﻿@model List<Inventario.Entities.Prestamo>
+@{
+    ViewData["Title"] = "Registrar Devoluciones";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Artículo</th>
+            <th>Fecha Entrega</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Usuario?.Nombre</td>
+                <td>@p.Articulo?.Nombre</td>
+                <td>@p.FechaEntrega?.ToShortDateString()</td>
+                <td>
+                    <form asp-action="Devolver" method="post">
+                        <input type="hidden" name="id" value="@p.Id" />
+                        <button class="btn btn-primary btn-sm">Registrar devolución</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model List<Inventario.Entities.Articulo>
+@{
+    ViewData["Title"] = "Solicitar Préstamo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form asp-action="Solicitar" method="post">
+    <div class="mb-3">
+        <label for="articuloId">Artículo</label>
+        <select class="form-select" name="articuloId" required>
+            <option disabled selected>-- Seleccione un artículo --</option>
+            @foreach (var articulo in Model)
+            {
+                <option value="@articulo.Id">@articulo.Nombre (@articulo.Codigo)</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="fechaEntrega">Fecha de entrega esperada</label>
+        <input type="date" class="form-control" name="fechaEntrega" required />
+    </div>
+    <button class="btn btn-primary" type="submit">Solicitar</button>
+</form>

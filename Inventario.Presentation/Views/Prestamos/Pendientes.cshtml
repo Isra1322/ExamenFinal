@@ -1,0 +1,39 @@
+﻿@model List<Inventario.Entities.Prestamo>
+@{
+    ViewData["Title"] = "Solicitudes Pendientes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Artículo</th>
+            <th>Fecha Solicitud</th>
+            <th>Fecha Entrega</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Usuario?.Nombre</td>
+                <td>@p.Articulo?.Nombre</td>
+                <td>@p.FechaSolicitud.ToShortDateString()</td>
+                <td>@p.FechaEntrega?.ToShortDateString()</td>
+                <td>
+                    <form asp-action="Aprobar" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@p.Id" />
+                        <button class="btn btn-success btn-sm">Aprobar</button>
+                    </form>
+                    <form asp-action="Rechazar" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@p.Id" />
+                        <button class="btn btn-danger btn-sm">Rechazar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

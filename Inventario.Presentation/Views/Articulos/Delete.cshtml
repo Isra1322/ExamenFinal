@@ -1,0 +1,25 @@
+﻿@model Inventario.Entities.Articulo
+@{
+    ViewData["Title"] = "Eliminar Artículo";
+    bool tienePrestamo = ViewBag.TienePrestamoActivo == true;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (tienePrestamo)
+{
+    <div class="alert alert-warning">
+        Este artículo tiene préstamos activos y no puede ser eliminado.
+    </div>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+}
+else
+{
+    <p>¿Estás seguro de que deseas eliminar el artículo <strong>@Model.Nombre</strong>?</p>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+}

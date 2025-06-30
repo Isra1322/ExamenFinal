@@ -1,0 +1,48 @@
+﻿@model Inventario.Presentation.Models.RegisterViewModel
+@using Inventario.Entities
+@{
+    ViewData["Title"] = "Registro";
+    Layout = "_Layout";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+    <div class="card shadow-sm p-4" style="min-width: 350px; max-width: 450px;">
+        <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
+
+        <form asp-action="Register" method="post">
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Contrasena" class="form-label"></label>
+                <input asp-for="Contrasena" type="password" class="form-control" />
+                <span asp-validation-for="Contrasena" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Rol" class="form-label"></label>
+                <select asp-for="Rol" asp-items="ViewBag.Roles" class="form-select"></select>
+                <span asp-validation-for="Rol" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Registrarse</button>
+        </form>
+
+        <div class="mt-3 text-center">
+            ¿Ya tienes cuenta? <a asp-action="Login">Inicia sesión</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Panel de Operador";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>Bienvenido, operador. Aquí puedes ver artículos y gestionar préstamos asignados.</p>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Solicitar Préstamo</h5>
+                <p class="card-text">Busca artículos disponibles y realiza una solicitud.</p>
+                <a href="@Url.Action("Solicitar", "Prestamos")" class="btn btn-primary">Solicitar Préstamo</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Mis Solicitudes</h5>
+                <p class="card-text">Consulta el estado de tus solicitudes de préstamo.</p>
+                <a href="@Url.Action("MisSolicitudes", "Prestamos")" class="btn btn-info">Ver Solicitudes</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Artículos</h5>
+                <p class="card-text">Ver artículos registrados en el inventario.</p>
+                <a href="@Url.Action("Index", "Articulos")" class="btn btn-secondary">Ver Artículos</a>
+            </div>
+        </div>
+    </div>
+</div>
